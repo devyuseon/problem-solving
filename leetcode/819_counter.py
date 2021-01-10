@@ -1,6 +1,7 @@
 import collections
 import re
 from typing import OrderedDict
+from typing import List
 
 
 def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:

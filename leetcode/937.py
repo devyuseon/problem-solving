@@ -1,3 +1,6 @@
+from typing import List
+
+
 def reorderLogFiles(self, logs: List[str]) -> List[str]:
     char_log: str = []
     int_log: str = []

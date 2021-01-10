@@ -1,3 +1,6 @@
+from typing import List
+
+
 def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
     anagrams = []
     sorted_words = []
