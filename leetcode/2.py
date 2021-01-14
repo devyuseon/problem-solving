@@ -28,11 +28,11 @@ class Solution:
         return prev
 
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        # l1 역순으로 뒤집기
+        # l1,l2 역순으로 뒤집기
         l1 = self.reverseList(l1)
         l2 = self.reverseList(l2)
 
-        # 하나씩 문자열로 저장
+        # 하나씩 리스트로 저장
         l1_list = []
         l2_list = []
 
