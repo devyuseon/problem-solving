@@ -1,13 +1,12 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        substr = []
-        tmp = []
-        for i, n in enumerate(s):
-            if n not in tmp:
-                tmp.append(n)
+        used = {}
+        max_length = start = 0
+        for index, char in enumerate(s):
+            # 이미 등장했던 문자라면 start 위치 갱신
+            if char in used and start <= used[char]:
+                start = used[char] + 1
             else:
-                substr.append(''.join(tmp))
-                tmp = []
-                i -= 1
-        max_len = sorted(substr, key=lambda x: len(x), reverse=True)
-        return len(max_len[0])
+                max_length = max(max_length, index - start + 1)
+            used[char] = index
+        return max_length
