@@ -1,22 +1,23 @@
 import sys
 
+N, S = map(int, input().split())
+list = list(map(int, input().split()))
 
-def sub_sum(N: int, S: int, list: list) -> int:
-    min_length = sys.maxsize
-    start = 0
-    now_sum = 0
-    for index, int in enumerate(list):
-        if sum(list[start:index]) >= S:
-            min_length = min(min_length, index - start)
-            start += 1
-            index -= 1
-        else:
-            continue
-    return min_length
+# 부분합 못구함
+if sum(list) < S:
+    print(0)
 
+min_length = sys.maxsize
+start = 0
+last = start + 1
 
-N, S = 10, 15
-list = list(map(int, "5 1 3 5 10 7 4 9 2 8".split()))
+while(start + min_length != N):
+    sub_list = list[start:last+1]
+    if sum(sub_list) >= S:
+        min_length = min(min_length, len(sub_list))
+        start += 1
+    else:
+        start += 1
+        last += 1
 
-# print(sub_sum(N, S, list))
-print(sub_sum(N, S, list))
+print(min_length)
