@@ -3,21 +3,26 @@ import sys
 N, S = map(int, input().split())
 list = list(map(int, input().split()))
 
-# 부분합 못구함
-if sum(list) < S:
-    print(0)
+sum_untill_n = [0] * (N+1)
+for i in range(1, N + 1):
+    sum_untill_n[i] = sum_untill_n[i-1] + list[i-1]
 
 min_length = sys.maxsize
 start = 0
-last = start + 1
+end = start + 1
 
-while(start + min_length != N):
-    sub_list = list[start:last+1]
-    if sum(sub_list) >= S:
-        min_length = min(min_length, len(sub_list))
+while(start != N):
+    if sum_untill_n[end] - sum_untill_n[start] >= S:
+        min_length = min(end - start, min_length)
         start += 1
+
     else:
-        start += 1
-        last += 1
+        if end != N:
+            end += 1
+        else:
+            start += 1
 
-print(min_length)
+if min_length == sys.maxsize:
+    print(0)
+else:
+    print(min_length)
