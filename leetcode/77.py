@@ -2,17 +2,18 @@ from typing import List
 
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        prev = []
-        answer= []
 
-        def dfs(k, next):
-            if len(prev) == k:
-                answer.append(prev[:]) # 참조 전달하지 않도록
+        answer = []
+
+        def dfs(tmp, start, k):
+            if k == 0:
+                answer.append(tmp[:])
             
-            for i in range(0, len(next)):
-                prev.append(next[0])
-                next = next[1, len(next)]
-                dfs(k, next[:])
-                prev.pop()
+            for i in range(start, n + 1):
+                tmp.append(i)
+                dfs(tmp, i + 1, k - 1)
+                tmp.pop()
+        
+        dfs([], 1, k)
 
         return answer
