@@ -1,21 +1,14 @@
 from typing import List
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        answer = []
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        result = []
+
+        def dfs(index, cur):
+            result.append(cur)
+
+            for i in range(index, len(nums)):
+                dfs(i + 1, cur + [nums[i]])
         
-        def dfs(sum, index, cur):
-            if sum < 0:
-                return
-            if sum == 0:
-                answer.append(cur)
-                return
-
-            for i in range(index, len(candidates)):
-                dfs(sum - candidates[i], i, cur + [candidates[i]])
-
-        dfs(target, 0, [])
-        return answer
-
-
-
+        dfs(0, [])
+        return result
