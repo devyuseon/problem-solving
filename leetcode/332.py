@@ -5,19 +5,15 @@ class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         result = []
 
-        # 'to' 기준으로 어휘순 정렬 (오름차순)
-        tickets.sort(key= lambda x: x[1])
+        graph = collections.defaultdict(list)
+        for a, b in sorted(tickets):
+            graph[a].append(b)
 
-        # 'JFK' 출발인 티켓 인덱스 구함 (정렬되어있어 최초 등장 구함)
-        index = 0
-        for i, ticket in enumerate(tickets):
-            if tickets[0] == 'JFK':
-                index = i
-                break
-        tmp = tickets[index]
-        tickets.remove(tickets[index])
+        def dfs(a):
+            # 첫 번째 값을 읽어 어휘 순 방문
+            while graph[a]:
+                dfs(graph[a].pop(0))
+            result.append(a)
 
-        dic = collections.OrderedDict(tickets)
-        dfs()
-
-        return tickets
+        dfs('JFK')
+        return result[::-1]
