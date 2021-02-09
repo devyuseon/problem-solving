@@ -10,5 +10,6 @@ for _ in range(0, T):
     # 맨 꼭대기 층일때, 나누어 떨어질때
     if c == 0:
         c = H
+        q -= 1
 
-    print(str(c) + (str(q + 1)).zfill(2))
+    print(c*100 + q+1)
