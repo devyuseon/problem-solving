@@ -1,37 +1,43 @@
 import sys
+from collections import deque
 
 class Queue:
     def __init__(self):
-        self.stack = []
-        self.stack_top = -1
+        self.queue = deque()
+        self.queue_size = 0
     
     def push(self, x: int):
-        self.stack.append(x)
-        self.stack_top += 1
+        self.queue.append(x)
+        self.queue_size += 1
     
     def pop(self):
-        if self.stack_top == -1:
+        if self.queue_size == 0:
             return -1
-        tmp = self.stack[self.stack_top]
-        del self.stack[self.stack_top]
-        self.stack_top -= 1
+        tmp = self.queue[0]
+        del self.queue[0]
+        self.queue_size -= 1
         return tmp
     
     def size(self):
-        return self.stack_top + 1
+        return self.queue_size
     
     def empty(self):
-        if self.stack_top == -1:
+        if self.queue_size == 0:
             return 1
         else:
             return 0
     
-    def top(self):
-        if self.stack_top == -1:
+    def front(self):
+        if self.queue_size == 0:
             return -1
-        return self.stack[self.stack_top]
+        return self.queue[0]
+    
+    def back(self):
+        if self.queue_size == 0:
+            return -1
+        return self.queue[self.queue_size-1]
 
-s = Stack()
+s = Queue()
 
 N = int(input())
 for _ in range(N):
@@ -47,5 +53,7 @@ for _ in range(N):
             print(s.size())
         elif command[0] == "empty":
             print(s.empty())
-        elif command[0] == "top":
-            print(s.top())
+        elif command[0] == "front":
+            print(s.front())
+        elif command[0] == "back":
+            print(s.back())
