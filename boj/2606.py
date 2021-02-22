@@ -9,14 +9,17 @@ computer = defaultdict(list)
 for _ in range(M):
     a, b = map(int, sys.stdin.readline().split())
     computer[a].append(b)
+    computer[b].append(a)
 
 discoverd = []
 stack = [1]
+
+# DFS
 while stack:
     v = stack.pop()
     if v not in discoverd:
         discoverd.append(v)
         for w in computer[v]:
-            stack.append(w)
+            stack.append(w) 
 
 print(len(discoverd) - 1)
