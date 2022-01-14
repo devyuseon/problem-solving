@@ -19,14 +19,14 @@ for b in brackets:
         tmp = 0
         while stack:
             poped = stack.pop()
-            if poped in open_bracket:
-                if bracket_match_dic[poped] == b:
+            if poped in open_bracket: # 괄호일 경우
+                if bracket_match_dic[poped] == b: # 일치
                     if tmp == 0:
                         stack.append(bracket_value_dic[b])
-                    else:
+                    else: # 중첩됨
                         stack.append(bracket_value_dic[b] * tmp)
                     break
-                else:
+                else: # 불일치
                     print(0)
                     exit()
             else: # 숫자일 경우
