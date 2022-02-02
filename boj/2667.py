@@ -1,5 +1,8 @@
 from typing import List
 
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
 def dfs(graph: List[List[int]], N:int, i:int, j:int, count_house: List, count_apart:int):
     # 더이상 집이 아닌 경우 return
     if i < 0 or i >= N or \
@@ -10,11 +13,10 @@ def dfs(graph: List[List[int]], N:int, i:int, j:int, count_house: List, count_ap
     # 집인 경우
     graph[i][j] = -1 # 구분하기 위함(방문)
     count_house[count_apart] += 1
-    dfs(graph, N, i-1, j, count_house, count_apart)
-    dfs(graph, N, i, j-1, count_house, count_apart)
-    dfs(graph, N, i+1, j, count_house, count_apart)
-    dfs(graph, N, i, j+1, count_house, count_apart)
-
+    for k in range(4):
+        x = i + dx[k]
+        y = j + dy[k]
+        dfs(graph, N, x, y, count_house, count_apart)
 
 # 입력
 N = int(input())
