@@ -8,19 +8,19 @@ def bfs(n, k):
     min_time = -1
     
     while Q:
-        cur, dist = Q.popleft()
+        cur, time = Q.popleft()
         visited[cur] = True
         if cur == k:
             if count == 0:
-                min_time = dist
+                min_time = time
                 count += 1
             else:
-                if min_time == dist:
+                if min_time == time:
                     count += 1            
         
         for nx in (cur - 1, cur + 1, cur * 2):
             if 0 <= nx <= MAX and not visited[nx]:
-                Q.append((nx, dist + 1))
+                Q.append((nx, time + 1))
     return min_time, count
     
 n, k = map(int, input().split())
