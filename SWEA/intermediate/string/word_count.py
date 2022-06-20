@@ -1,7 +1,5 @@
 # 5차시 3일차 - 글자수
 
-# 3차시 3일차 - 문자열 비교
-
 import sys
 from collections import defaultdict
 sys.stdin = open("SWEA\input.txt", "r")
