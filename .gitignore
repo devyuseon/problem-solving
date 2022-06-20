@@ -131,5 +131,4 @@ dmypy.json
 .vscode/
 settings.json
 
-swExpertAcademy\input.txt
-swExpertAcademy/input.txt
+SWEA/input.txt
