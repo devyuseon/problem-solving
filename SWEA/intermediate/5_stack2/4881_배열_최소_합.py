@@ -10,7 +10,7 @@ def dfs(N, i, SUM):
         if SUM < MIN:
             MIN = SUM
     
-    if MIN < SUM:
+    if MIN < SUM: # 이 과정이 핵심!
         return
     else:
         for j in range(N):
