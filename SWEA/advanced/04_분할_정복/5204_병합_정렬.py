@@ -11,7 +11,6 @@ def divide(li):
     right = divide(li[mid:])
     return merge(left, right)
 
-# start -> left, mid + 1 -> right, end -> end
 def merge(left, right):
     global cnt
     
