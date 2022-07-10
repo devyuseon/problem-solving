@@ -1,4 +1,4 @@
-# 5249. [파이썬 S/W 문제해결 구현] 7일차 - 최소 신장 트리
+# 5251. [파이썬 S/W 문제해결 구현] 7일차 - 최소 이동 거리
 
 import sys
 from collections import defaultdict
