@@ -12,6 +12,9 @@ def dijkstra(start):
         cost, node = heapq.heappop(Q)
         if dist[node] is None: # 방문하지 않음
             dist[node] = cost
+            
+            if node == n: return
+            
             for w, v in graph[node]:
                 alt = cost + w
                 heapq.heappush(Q, (alt, v))
@@ -26,6 +29,5 @@ for test_case in range(1, T + 1):
         graph[u].append((w, v)) # 가중치, 도착점
     
     dijkstra(0)
-            
     print(f'#{test_case} {dist[n]}')
     
