@@ -40,7 +40,7 @@ for test_case in range(1, T + 1):
         cnt += len(suffix[i]) - lcp[i] # lcp 배열을 이용해 부분 문자열의 중복 제거
         
         if cnt >= n: # n번째를 구할 수 있는 범위 안에 들어옴
-            result = suffix[i][0 : len(suffix) - (cnt - n)]
+            result = suffix[i][0 : len(suffix[i]) - (cnt - n)]
             break            
     
     print(f'#{test_case} {result[0]} {len(result)}')
