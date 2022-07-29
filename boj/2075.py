@@ -12,4 +12,4 @@ for _ in range(n):
         if len(heap) > n:
             heapq.heappop(heap)
             
-print(min(heap))
+print(heapq.heappop(heap))
