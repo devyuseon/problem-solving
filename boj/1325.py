@@ -1,4 +1,4 @@
-# pypy3 216516kb / 14192ms
+# pypy3 216516kb / 14192ms 
 
 from collections import deque
 import sys
