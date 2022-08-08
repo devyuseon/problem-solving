@@ -28,7 +28,7 @@ def explode(sec):
                 matrix[nx][ny] = '.' # 폭발
     
 r, c, n = map(int, input().split())
-matrix = [['.'] * c for _ in range(r)] # -1은 폭탄이 설치되지 않은 상태
+matrix = [['.'] * c for _ in range(r)]
 for i in range(r):
     line = list(input())
     for j in range(c):
@@ -41,7 +41,6 @@ while sec <= n:
     if sec % 2 == 0:
         install(sec)
     if sec % 2 != 0:
-        visited = [[False] * c for _ in range(r)]
         explode(sec)
     sec += 1
 
