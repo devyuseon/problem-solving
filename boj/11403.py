@@ -1,0 +1,16 @@
+# pypy2 115408kb / 160ms
+
+import sys
+input = sys.stdin.readline
+                
+n = int(input())
+graph = [list(map(int, input().split())) for _ in range(n)]
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            # 어느 한 곳에 들러 i -> j 가는 길 ㅇ?
+            if graph[i][k] and graph[k][j]:
+                graph[i][j] = 1
+
+for g in graph: print(*g)
