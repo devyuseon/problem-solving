@@ -16,19 +16,17 @@ def union(x, y):
     
 def find(x):
     # 루트 노드 찾을때까지
-    if parent[x] != x:
-        return find(parent[x])
-    return x
-
-def is_union(x, y):
-    return find(x) == find(y)
-
+    if parent[x] == x:
+        return x
+    parent[x] = find(parent[x])
+    return parent[x]
+        
 for _ in range(m):
     cal, a, b = map(int, input().split())
     if cal == 0:
         union(a, b)
     if cal == 1:
-        if is_union(a, b):
+        if find(a) == find(b):
             print("YES")
         else:
             print("NO")
