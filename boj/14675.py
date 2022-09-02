@@ -5,14 +5,12 @@ from collections import defaultdict
 input = sys.stdin.readline
 
 graph = defaultdict(list)
-edges = []
 
 n = int(input())
 for _ in range(n - 1):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
-    edges.append((a, b))
 
 q = int(input())
 for _ in range(q):
