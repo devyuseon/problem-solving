@@ -22,9 +22,8 @@ def solution(info, query):
         i = i.split()
         infos.append(Info(i[0], i[1], i[2], i[3], i[4]))
         
-    while query:
-        candidate = [i for i in range(len(info))]
-        q = query.pop().split('and')
+    for q in query:
+        q = q.split('and')
         
         lan, job, year, food, score = q[0].strip(), q[1].strip(), q[2].strip(), q[3].split()[0], q[3].split()[1]
         
@@ -44,4 +43,4 @@ def solution(info, query):
         
         answer.append(cnt)
         
-    return answer[::-1]
+    return answer
