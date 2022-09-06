@@ -12,7 +12,7 @@ class Info:
         self._job = job
         self._year = year
         self._food = food
-        self._score = score
+        self._score = int(score)
 
 def solution(info, query):
     answer = []
@@ -22,13 +22,20 @@ def solution(info, query):
         i = i.split()
         infos.append(Info(i[0], i[1], i[2], i[3], i[4]))
         
+    infos.sort(reverse = True, key = lambda x: x._score)
+        
     for q in query:
         q = q.split('and')
         
-        lan, job, year, food, score = q[0].strip(), q[1].strip(), q[2].strip(), q[3].split()[0], q[3].split()[1]
+        lan, job, year, food, score = q[0].strip(), q[1].strip(), q[2].strip(), q[3].split()[0], int(q[3].split()[1])
         
         cnt = 0
         for people in infos:
+            # 점수
+            # 내림차순 정렬이므로 한명이라도 만족 안하면 그만봄
+            if people._score < score: break
+            
+            # 조건
             if lan != '-':
                 if people._lan != lan: continue
             if job != '-':
@@ -37,7 +44,6 @@ def solution(info, query):
                 if people._year != year: continue
             if food != '-':
                 if people._food != food: continue
-            if int(people._score) < int(score): continue
             
             cnt += 1
         
