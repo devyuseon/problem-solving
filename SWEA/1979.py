@@ -22,15 +22,8 @@ for test_case in range(1, T + 1):
                     if cnt == k:
                         res += 1
 
-    # 전치행렬 만들기
-    def reverse():
-        global matrix
-
-        tmp = list(zip(*matrix))
-        matrix = tmp
-
     cal()
-    reverse()
+    matrix = list(zip(*matrix)) # 전치행렬
     cal()
 
     print(f'#{test_case} {res}')
