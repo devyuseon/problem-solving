@@ -15,7 +15,7 @@ class Pair {
         this.y = y;
     }
 }
-public class Ex14658 {
+public class Main {
 
     static int n, m, l, k;
     static List<Pair> stars;
@@ -43,8 +43,8 @@ public class Ex14658 {
         }
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        bw.write(k - res);
-        bw.flush();
+        bw.write(String.valueOf(k - res));
+        bw.close();
         //System.out.println(k - res);
     }
 
