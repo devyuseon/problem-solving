@@ -1,5 +1,3 @@
-# 80퍼 틀림......
-
 import sys
 input = sys.stdin.readline
 
@@ -19,10 +17,11 @@ for k in range(n):
 city = list(map(int, input().split()))
 flag = True
 
-for i in range(0, m - 1):
-    if not graph[city[i] - 1][city[i + 1] - 1]:
-        flag = False
-        break
+if city[0] != city[-1]: # 시작점과 도착점이 같은 여행은 항상 가능!!!
+    for i in range(0, m - 1):
+        if not graph[city[i] - 1][city[i + 1] - 1]:
+            flag = False
+            break
     
 if flag: print("YES")
 else: print("NO")
