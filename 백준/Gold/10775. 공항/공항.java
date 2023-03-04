@@ -18,8 +18,7 @@ public class Main {
         x = find(x);
         y = find(y);
 
-        if (x < y) gates[y] = x;
-        else gates[x] = y;
+        gates[x] = y;
     }
 
     public static void main(String[] args) throws IOException {
