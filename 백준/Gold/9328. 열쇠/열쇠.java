@@ -27,29 +27,26 @@ public class Main {
     public static int[] dx = {-1, 1, 0, 0};
     public static int[] dy = {0, 0, -1, 1};
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
+    public static void main(String[] args) throws Exception {
+        int t = read();
+        StringBuilder sb = new StringBuilder();
 
         for (int tt = 0; tt < t; tt++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int h = Integer.parseInt(st.nextToken());
-            int w = Integer.parseInt(st.nextToken());
+            int h = read();
+            int w = read();
             char[][] matrix = new char[h + 2][w + 2];
             int key = 0;
 
             for (int i = 0; i < h; i++) {
-                String line = br.readLine();
                 for (int j = 0; j < w; j++) {
-                    matrix[i + 1][j + 1] = line.charAt(j);
+                    matrix[i + 1][j + 1] = (char) System.in.read();
                 }
+                System.in.read();
             }
 
-            String tmp = br.readLine();
-            if (!tmp.equals("0")) {
-                for (int i = 0; i < tmp.length(); i++) {
-                    key |= 1 << (tmp.charAt(i) - 'a');
-                }
+            int tmp;
+            while((tmp = System.in.read()) > 32) {
+                if(tmp != '0') key |= 1 << (tmp - 'a');
             }
 
             ArrayDeque<Point> dq = new ArrayDeque<>();
@@ -82,7 +79,7 @@ public class Main {
                                     // 큐에 넣어서 탐색
                                     dq.addLast(new Point(door.x, door.y));
                                 }
-                                
+
                             }
                         }
 
@@ -107,7 +104,15 @@ public class Main {
                 }
             }
 
-            System.out.println(cnt);
+            sb.append(cnt).append("\n");
         }
+
+        System.out.println(sb);
+    }
+
+    static int read() throws Exception{
+        int c, n = System.in.read() & 15;
+        while((c = System.in.read()) > 32) n = (n<<3) + (n<<1) + (c & 15);
+        return n;
     }
 }
