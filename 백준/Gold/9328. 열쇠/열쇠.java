@@ -76,13 +76,13 @@ public class Main {
                         for (Point door: doors) {
                             // 지금 주운 열쇠로 문을 열 수 있음
                             if (Character.toLowerCase(matrix[door.x][door.y]) == matrix[nx][ny]) {
-                                matrix[door.x][door.y] = '.';
-                                visited[door.x][door.y] = true;
-                                // 큐에 넣어서 탐색
-                                dq.addLast(new Point(door.x, door.y));
-                            } else {
-                                // 열 수 없다면 다시 doors 에 넣어줌
-                                //doors.addLast(door);
+                                if (!visited[door.x][door.y]) {
+                                    matrix[door.x][door.y] = '.';
+                                    visited[door.x][door.y] = true;
+                                    // 큐에 넣어서 탐색
+                                    dq.addLast(new Point(door.x, door.y));
+                                }
+                                
                             }
                         }
 
