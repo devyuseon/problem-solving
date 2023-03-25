@@ -42,11 +42,7 @@ public class Main {
 
     public static boolean isPossible(int r, int c, int n) {
         for (int i = 0; i < 9; i++) {
-            if (board[r][i] == n) return false;
-        }
-
-        for (int i = 0; i < 9; i++) {
-            if (board[i][c] == n) return false;
+            if (board[r][i] == n || board[i][c] == n) return false;
         }
 
         // 시작 위치
