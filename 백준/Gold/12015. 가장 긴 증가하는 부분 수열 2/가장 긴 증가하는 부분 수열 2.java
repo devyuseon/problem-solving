@@ -4,51 +4,30 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+
 public class Main {
 
-    public static int[] nums;
-    public static int[] lis;
+    public static int n;
 
     public static void main(String[] args) throws IOException {
-        new Main().solution();
-    }
-
-    public static int binarySearch(int left, int right, int target) {
-        int mid;
-        while (left < right) {
-            mid = (left + right) / 2;
-            if (lis[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
-        }
-        return right;
-    }
-
-    public void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        nums = new int[n];
-        lis = new int [n];
-
+        n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] nums = new int[n];
         for (int i = 0; i < n; i++) {
             nums[i] = Integer.parseInt(st.nextToken());
         }
-        lis[0] = nums[0];
-        int last = 0;
 
-        for (int i = 1; i < n; i++) {
-            if (lis[last] < nums[i]) {
-                lis[last + 1] = nums[i];
-                last++;
-            } else {
-                int idx = binarySearch(0, last, nums[i]);
-                lis[idx] = nums[i];
-            }
+        int[] list = new int[n];
+
+        int size = 0;
+        for (int i = 0; i < n; i++) {
+            int idx = Arrays.binarySearch(list, 0, size, nums[i]);
+            if (idx < 0) idx = idx * (-1) - 1;
+            list[idx] = nums[i];
+            if (idx == size) size++; // 끝에 들어갔을 경우
         }
 
-        System.out.println(last + 1);
+        System.out.println(size);
     }
 }
